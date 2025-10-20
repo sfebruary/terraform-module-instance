@@ -1,0 +1,19 @@
+#cloud-config
+users:
+  - default
+  - name: ${admin_username}
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+hostname: ${shortname}
+fqdn: ${shortname}
+prefer_fqdn_over_hostname: true
+
+network:
+  version: 1
+  config:
+    - type: physical
+      name: eth1
+      subnets:
+        - type: static
+          address: ${private_port_address}
+
